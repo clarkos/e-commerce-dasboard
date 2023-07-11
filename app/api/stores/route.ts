@@ -7,13 +7,16 @@ export async function POST( req: Request ) {
     const { userId } = auth();
     const body = await req.json();
 
-    const { name } = body
+    const { name } = body;
     
-    if ( !userId ) new NextResponse("Unauthorized", { status: 401 });
+    if ( !userId ) {
+      new NextResponse("Unauthorized", { status: 401 })
+    };
     
-    if ( !name ) new NextResponse("Name is required", { status: 400 });
+    if ( !name ) {
+      new NextResponse("Name is required", { status: 400 })
+    };
     
-    // const userI: string = userId as string;
     const store = await prismadb.store.create({
       data: {
         name,
@@ -24,6 +27,6 @@ export async function POST( req: Request ) {
 
   } catch (error) {
     console.log('[STORES_POST]', error);
-    return new NextResponse("Internal error", {status: 500});
+    return new NextResponse("Internal error", { status: 500 });
   }
 }

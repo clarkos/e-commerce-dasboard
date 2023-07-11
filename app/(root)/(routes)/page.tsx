@@ -14,11 +14,7 @@ const SetupPage = () => {
 
   }, [isOpen, onOpen])
   
-  return (
-    <div>
-      
-    </div>
-  )
+  return null;
 }
 
 export default SetupPage;

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-hot-toast"; 
 
 import { useStoreModal } from "@/hooks/useStoreModal";
 import { Modal } from "@/components/ui/modal";
@@ -24,10 +25,10 @@ const formSchema = z.object({
 });
 
 export const StoreModal = () => {
+  const storeModal= useStoreModal();
 
   const [loading, setLoading] = useState(false)
   
-  const storeModal= useStoreModal();
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -39,13 +40,10 @@ export const StoreModal = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       setLoading(true);
-
       const response = await axios.post('/api/stores', values);
-      console.log(response.data);
-      
+      toast.success("Store Created")      
     } catch (error) {
-      console.log(error);
-      
+      toast.error("Something doesn't go as suposed to...")
     } finally {
       setLoading(false);
     }
@@ -53,8 +51,8 @@ export const StoreModal = () => {
 
   return (
     <Modal 
-      title="Store Form" 
-      description="A future create store"
+      title="Create Store" 
+      description="Insert the name for the store you want to administrate"
       isOpen={storeModal.isOpen}
       onClose={storeModal.onClose}
       >
@@ -78,7 +76,7 @@ export const StoreModal = () => {
                     </FormItem>
                   )}
                 />
-                <div className="py-6 space-x-2 flex items-center justify-end">
+                <div className="py-2 space-x-2 flex items-center justify-end">
                   <Button 
                     disabled={loading}
                     variant="outline" 
