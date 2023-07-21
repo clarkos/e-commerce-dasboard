@@ -6,7 +6,6 @@ import { toast } from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
 import { Copy, Delete, Edit, MoreHorizontal } from "lucide-react";
 
-import { CategoryColumn } from "./columns";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -17,8 +16,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { AlertModal } from "@/components/modals/alert-modal";
 
+import { SizeColumn } from "./columns";
+
 interface CellActionsProps {
-  data: CategoryColumn;
+  data: SizeColumn;
 }
 export const CellAction: React.FC<CellActionsProps> = ({ data }) => {
   const router = useRouter();
@@ -34,11 +35,11 @@ export const CellAction: React.FC<CellActionsProps> = ({ data }) => {
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/categories/${data.id}`);
+      await axios.delete(`/api/${params.storeId}/sizes/${data.id}`);
       router.refresh();
-      toast.success('Category deleted.');
+      toast.success('Size deleted.');
     } catch (error: any) {
-      toast.error('Make sure you removed all products that uses this category.');
+      toast.error('Make sure you removed all products that uses this size.');
     } finally {
       setLoading(false);
       setOpen(false);
@@ -68,7 +69,7 @@ export const CellAction: React.FC<CellActionsProps> = ({ data }) => {
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() =>
-            router.push(`/${params.storeId}/categories/${data.id}`)
+            router.push(`/${params.storeId}/sizes/${data.id}`)
           }
         >
           <Edit className="mr-2 h-4 w-4" />

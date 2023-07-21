@@ -6,16 +6,16 @@ import { useParams, useRouter } from "next/navigation";
 import { Heading } from "@/components/ui/Heading";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-
-import { CategoryColumn, columns } from "./columns";
 import { DataTable } from "@/components/ui/DataTable";
 import { ApiList } from "@/components/ui/api-list";
 
-interface CategoryClientProps {
-  data: CategoryColumn[];
+import { SizeColumn, columns } from "./columns";
+
+interface SizeClietProps {
+  data: SizeColumn[];
 }
 
-export const CategoryClient: React.FC<CategoryClientProps> = ({
+export const SizeClient: React.FC<SizeClietProps> = ({
   data
 }) => {
 
@@ -26,22 +26,22 @@ export const CategoryClient: React.FC<CategoryClientProps> = ({
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Categories (${data.length})`}
-          description="Manage categories for your store"
+          title={`Sizes (${data.length})`}
+          description="Manage sizes for your store"
         />
-        <Button onClick={() => router.push(`/${params.storeId}/categories/new`)}>
+        <Button onClick={() => router.push(`/${params.storeId}/sizes/new`)}>
           <Plus className="mr-2 w-4 h-4" />
           Add new
         </Button>
       </div>
       <Separator />
 
-      <DataTable columns={columns} data={data} searchKey="name" />
+      <DataTable searchKey="name" columns={columns} data={data} />
     
-      <Heading title="API" description="API endpoints for categories" />
+      <Heading title="API" description="API endpoints for sizes" />
       <Separator />
 
-      <ApiList entityName="categories" entityIdName="categoryId" />
+      <ApiList entityName="sizes" entityIdName="sizeId" />
     </>
   );
 };
