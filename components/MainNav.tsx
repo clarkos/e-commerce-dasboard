@@ -28,9 +28,9 @@ export function MainNav({
       active: pathname === `/${params.storeId}/billboards`
     },
     {
-      href: `/${params.storeId}/stock`,
-      label: 'Stock',
-      active: pathname === `/${params.storeId}/stock`
+      href: `/${params.storeId}/categories`,
+      label: 'Categories',
+      active: pathname === `/${params.storeId}/categories`
     },
     {
       href: `/${params.storeId}/reports`,
