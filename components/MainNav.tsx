@@ -18,11 +18,6 @@ export function MainNav({
       active: pathname === `/${params.storeId}`
     },
     {
-      href: `/${params.storeId}/settings`,
-      label: 'Settings',
-      active: pathname === `/${params.storeId}/settings`
-    },
-    {
       href: `/${params.storeId}/billboards`,
       label: 'Billboard',
       active: pathname === `/${params.storeId}/billboards`
@@ -43,10 +38,19 @@ export function MainNav({
       active: pathname === `/${params.storeId}/colors`
     },
     {
-      href: `/${params.storeId}/reports`,
-      label: 'Reports',
-      active: pathname === `/${params.storeId}/reports`
-    }
+      href: `/${params.storeId}/products`,
+      label: 'Products',
+      active: pathname === `/${params.storeId}/products`
+    },
+    {
+      href: '#',
+      label: "|",
+    },
+    {
+      href: `/${params.storeId}/settings`,
+      label: 'Settings',
+      active: pathname === `/${params.storeId}/settings`
+    },
   ];
   return (
     <nav 
