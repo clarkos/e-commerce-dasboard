@@ -2,14 +2,15 @@ import { Inter } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
 
 import { ModalProvider } from '@/providers/modalProvider'
+import { ToasterProvider } from '@/providers/toast-provider'
 
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'GrooveTickets - Admin',
-  description: 'Administration module for GrooveTickets Site',
+  title: 'MegaStoreAdmin',
+  description: 'Administration module for multipleStore Sites',
 }
 
 export default function RootLayout({
@@ -21,6 +22,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
+          <ToasterProvider />
           <ModalProvider />
           {children}
         </body>
