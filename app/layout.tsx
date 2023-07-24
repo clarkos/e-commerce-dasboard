@@ -9,8 +9,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'GrooveTickets - Admin',
-  description: 'Administration module for GrooveTickets Site',
+  title: 'MegaStoreAdmin',
+  description: 'Administration module for multipleStore Sites',
 }
 
 export default function RootLayout({
