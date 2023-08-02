@@ -85,10 +85,10 @@ export default function Drawer() {
           </div>
           <ul className="flex flex-col mx-8">
             {
-              routes.map(route => (
-                <li className="text-3xl font-bold text-gray-800 py-4 border-t pl-4 border-gray-500 hover:bg-gray-700" onClick={toggleOpen}>
+              routes.map((route, index) => (
+                <li key={`${index}+${route.href}`} className="text-3xl font-bold text-gray-800 py-4 border-t pl-4 border-gray-500 hover:bg-gray-700" onClick={toggleOpen}>
                   <Link
-                    key={route.href}
+                    
                     href={route.href}
                     className={cn(
                       "transition-colors hover:text-primary",
